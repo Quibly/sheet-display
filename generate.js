@@ -16,7 +16,7 @@ function parseCSV(csv) {
   }).data;
 }
 
-function buildHTML(data) {
+function buildHTML(top3, rest) {
   return `
 <!DOCTYPE html>
 <html>
@@ -86,6 +86,34 @@ function buildHTML(data) {
       font-size: 14px;
       color: #555;
     }
+
+    .games_results_top3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .games_results_list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .games_results_list .games_results_card {
+      padding: 12px 14px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .games_results_top3 {
+        grid-template-columns: 1fr;
+      }
+    }
+    
   </style>
 </head>
 <body>
@@ -95,19 +123,42 @@ function buildHTML(data) {
     <div class="games_results_banner_description">These are the total scores (total of all games the individual has participated in.)</div>
   </div>
   <div class="games_results_container">
-    <div class="games_results_grid">
-      ${data.map((row, index) => `
-        <div class="games_results_card">
-
-          ${index === 0 ? `<h3 class="rank-title first">First Place</h3>` : ""}
-          ${index === 1 ? `<h3 class="rank-title second">Second Place</h3>` : ""}
-          ${index === 2 ? `<h3 class="rank-title third">Third Place</h3>` : ""}
+    <!-- 🏆 TOP 3 PODIUM -->
+    <div class="games_results_top3">
     
-          ${Object.entries(row).map(([key, value]) => `
-            <p><strong>${key}:</strong> ${value}</p>
-          `).join("")}
-        </div>
-      `).join("")}
+      ${top3.map((row, index) => {
+        const fullName = `${row["First Name"] || ""} ${row["Last Name"] || ""}`.trim();
+    
+        return `
+          <div class="games_results_card">
+    
+            ${
+              index === 0 ? `<h3 class="rank-title first">First Place</h3>` :
+              index === 1 ? `<h3 class="rank-title second">Second Place</h3>` :
+              `<h3 class="rank-title third">Third Place</h3>`
+            }
+    
+            <p>#${index + 1} - ${fullName} - Score: ${row.Score}</p>
+          </div>
+        `;
+      }).join("")}
+    
+    </div>
+    
+    <!-- 📋 REST OF LEADERBOARD -->
+    <div class="games_results_list">
+    
+      ${rest.map((row, index) => {
+        const place = index + 4; // because top 3 already used
+        const fullName = `${row["First Name"] || ""} ${row["Last Name"] || ""}`.trim();
+    
+        return `
+          <div class="games_results_card">
+            #${place} - ${fullName} - Score: ${row.Score}
+          </div>
+        `;
+      }).join("")}
+    
     </div>
   </div>
 </body>
@@ -128,10 +179,10 @@ async function run() {
       }))
       .sort((a, b) => b.Score - a.Score);
     
-    // Optional: limit after sorting
-    const trimmed = data.slice(0, 20);
+    const top3 = data.slice(0, 3);
+    const rest = data.slice(3, 20);
 
-    const html = buildHTML(trimmed);
+    const html = buildHTML(top3, rest);
 
     fs.writeFileSync("docs/index.html", html);
 
