@@ -96,8 +96,13 @@ function buildHTML(data) {
   </div>
   <div class="games_results_container">
     <div class="games_results_grid">
-      ${data.map(row => `
+      ${data.map((row, index) => `
         <div class="games_results_card">
+
+          ${index === 0 ? `<h3 class="rank-title first">First Place</h3>` : ""}
+          ${index === 1 ? `<h3 class="rank-title second">Second Place</h3>` : ""}
+          ${index === 2 ? `<h3 class="rank-title third">Third Place</h3>` : ""}
+    
           ${Object.entries(row).map(([key, value]) => `
             <p><strong>${key}:</strong> ${value}</p>
           `).join("")}
