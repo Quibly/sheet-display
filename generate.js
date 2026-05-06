@@ -85,7 +85,7 @@ async function run() {
 
     const html = buildHTML(trimmed);
 
-    fs.writeFileSync("public/index.html", html);
+    fs.writeFileSync("docs/index.html", html);
 
     console.log("✅ HTML generated");
   } catch (err) {
