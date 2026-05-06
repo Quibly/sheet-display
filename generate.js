@@ -2,7 +2,11 @@ const fs = require("fs");
 const Papa = require("papaparse");
 
 // 🔧 PUT YOUR SHEET URL HERE
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFUuAjoK9z114GjHURfSbMgwGcn2EplLALc09pwMshTnuNsnvp5T_vn2cKghjql9Fyo4XyiT6EGCkl/pub?gid=0&single=true&output=csv";
+const SHEET_URL = process.env.SHEET_URL;
+
+if (!SHEET_URL) {
+  throw new Error("Missing SHEET_URL environment variable");
+}
 
 async function fetchCSV() {
   const res = await fetch(SHEET_URL);
