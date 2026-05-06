@@ -1,1 +1,10 @@
-
+{
+  "name": "sheet-render",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node generate.js"
+  },
+  "dependencies": {
+    "papaparse": "^5.4.1"
+  }
+}
