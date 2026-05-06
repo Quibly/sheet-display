@@ -113,9 +113,17 @@ function buildHTML(data) {
 async function run() {
   try {
     const csv = await fetchCSV();
-    const data = parseCSV(csv);
-
-    // 🔥 OPTIONAL: crop/filter here later
+    let data = parseCSV(csv);
+    
+    // Convert Score to number + sort highest → lowest
+    data = data
+      .map(row => ({
+        ...row,
+        Score: Number(row.Score) || 0
+      }))
+      .sort((a, b) => b.Score - a.Score);
+    
+    // Optional: limit after sorting
     const trimmed = data.slice(0, 20);
 
     const html = buildHTML(trimmed);
