@@ -67,6 +67,34 @@
       font-size: 14px;
       color: #555;
     }
+
+    .games_results_top3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .games_results_list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .games_results_list .games_results_card {
+      padding: 12px 14px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .games_results_top3 {
+        grid-template-columns: 1fr;
+      }
+    }
+    
   </style>
 </head>
 <body>
@@ -76,110 +104,51 @@
     <div class="games_results_banner_description">These are the total scores (total of all games the individual has participated in.)</div>
   </div>
   <div class="games_results_container">
-    <div class="games_results_grid">
-      
-        <div class="games_results_card">
-
-          <h3 class="rank-title first">First Place</h3>
-          
-          
+    <!-- 🏆 TOP 3 PODIUM -->
+    <div class="games_results_top3">
     
-          
-            <p><strong>First Name:</strong> Judy</p>
-          
-            <p><strong>Last Name:</strong> R</p>
-          
-            <p><strong>Email Address:</strong> judy@gmail.com</p>
-          
-            <p><strong>Score:</strong> 200</p>
-          
-        </div>
       
-        <div class="games_results_card">
-
-          
-          <h3 class="rank-title second">Second Place</h3>
-          
+          <div class="games_results_card">
     
-          
-            <p><strong>First Name:</strong> Diddy</p>
-          
-            <p><strong>Last Name:</strong> P</p>
-          
-            <p><strong>Email Address:</strong> diddy@gmail.com</p>
-          
-            <p><strong>Score:</strong> 175</p>
-          
-        </div>
-      
-        <div class="games_results_card">
-
-          
-          
-          <h3 class="rank-title third">Third Place</h3>
+            <h3 class="rank-title first">First Place</h3>
     
-          
-            <p><strong>First Name:</strong> George</p>
-          
-            <p><strong>Last Name:</strong> Crossy</p>
-          
-            <p><strong>Email Address:</strong> george@gmail.com</p>
-          
-            <p><strong>Score:</strong> 150</p>
-          
-        </div>
-      
-        <div class="games_results_card">
-
-          
-          
-          
+            <p>#1 - Judy R - Score: 200</p>
+          </div>
+        
+          <div class="games_results_card">
     
-          
-            <p><strong>First Name:</strong> Gary</p>
-          
-            <p><strong>Last Name:</strong> P</p>
-          
-            <p><strong>Email Address:</strong> gary@gmail.com</p>
-          
-            <p><strong>Score:</strong> 125</p>
-          
-        </div>
-      
-        <div class="games_results_card">
-
-          
-          
-          
+            <h3 class="rank-title second">Second Place</h3>
     
-          
-            <p><strong>First Name:</strong> Josh</p>
-          
-            <p><strong>Last Name:</strong> Crossy</p>
-          
-            <p><strong>Email Address:</strong> josh@gmail.com</p>
-          
-            <p><strong>Score:</strong> 100</p>
-          
-        </div>
-      
-        <div class="games_results_card">
-
-          
-          
-          
+            <p>#2 - Diddy P - Score: 175</p>
+          </div>
+        
+          <div class="games_results_card">
     
-          
-            <p><strong>First Name:</strong> Adam</p>
-          
-            <p><strong>Last Name:</strong> D</p>
-          
-            <p><strong>Email Address:</strong> adam@gmail.com</p>
-          
-            <p><strong>Score:</strong> 50</p>
-          
-        </div>
+            <h3 class="rank-title third">Third Place</h3>
+    
+            <p>#3 - George Crossy - Score: 150</p>
+          </div>
+        
+    
+    </div>
+    
+    <!-- 📋 REST OF LEADERBOARD -->
+    <div class="games_results_list">
+    
       
+          <div class="games_results_card">
+            #4 - Gary P - Score: 125
+          </div>
+        
+          <div class="games_results_card">
+            #5 - Josh Crossy - Score: 100
+          </div>
+        
+          <div class="games_results_card">
+            #6 - Adam D - Score: 50
+          </div>
+        
+    
     </div>
   </div>
 </body>
