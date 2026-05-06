@@ -70,21 +70,106 @@ function buildHTML(top3, rest) {
     }
 
     .games_results_card {
-      border: 1px solid #e5e5e5;
-      border-radius: 12px;
-      padding: 16px;
-      background: white;
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 16px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .games_results_card h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
+    /* subtle hover lift */
+    .games_results_card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
     }
 
+    /* top highlight bar (modern leaderboard feel) */
+    .games_results_card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 100%;
+      background: linear-gradient(90deg, #0f172a, #1e3a8a, #2563eb);
+      opacity: 0.9;
+    }
+
+    /* title / name styling (first field usually) */
+    .games_results_card h3,
+    .games_results_card strong:first-child {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* general text rows */
     .games_results_card p {
-      margin: 0;
-      font-size: 14px;
-      color: #555;
+      margin: 6px 0 0;
+      font-size: 1rem;
+      color: #475569;
+      line-height: 1.4;
+    }
+
+    /* label styling (Score, Name, etc.) */
+    .games_results_card strong {
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    /* SCORE emphasis if present */
+    .games_results_card p:has(strong:contains("Score")) {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .games_results_card:nth-child(1) {
+      border: 1px solid #fbbf24;
+      background: linear-gradient(180deg, #fffdf5, #ffffff);
+    }
+
+    .games_results_card:nth-child(1)::before {
+      background: linear-gradient(90deg, #fbbf24, #f59e0b);
+    }
+
+    .games_results_card:nth-child(2) {
+      border: 1px solid #cbd5e1;
+    }
+
+    .games_results_card:nth-child(3) {
+      border: 1px solid #d6b37a;
+    }
+
+    .rank-title {
+      margin: 0 0 10px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    /* 1st place */
+    .rank-title.first {
+      background: linear-gradient(90deg, #fbbf24, #f59e0b);
+      color: #1f2937;
+    }
+
+    /* 2nd place */
+    .rank-title.second {
+      background: linear-gradient(90deg, #cbd5e1, #94a3b8);
+      color: #0f172a;
+    }
+
+    /* 3rd place */
+    .rank-title.third {
+      background: linear-gradient(90deg, #d6b37a, #b45309);
+      color: #1f2937;
     }
 
     .games_results_top3 {
@@ -100,20 +185,19 @@ function buildHTML(top3, rest) {
       gap: 12px;
     }
 
+    @media (max-width: 900px) {
+      .games_results_top3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .games_results_list .games_results_card {
       padding: 12px 14px;
       font-size: 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    @media (max-width: 900px) {
-      .games_results_top3 {
-        grid-template-columns: 1fr;
-      }
-    }
-    
+    }    
   </style>
 </head>
 <body>
