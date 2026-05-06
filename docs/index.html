@@ -10,29 +10,59 @@
       background: #ffffff;
     }
 
-    .container {
+    .games_results_banner_container {
+      font-family: Montserrat;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      background-image: url('https://lh3.googleusercontent.com/d/1EFIcovnHrCFnmw-4dgM0ZWgrJTy3U1AL');
+      color: white;
+    }
+
+    .games_results_banner_logo {
+      width: 20rem;
+    }
+
+    .games_results_banner_logo img {
+      width: 100%;
+    }
+
+    .games_results_banner_title {
+      font-size: 1.6rem;
+      font-weight: bold;
+      padding-top: 50px;
+    }
+
+    .games_results_banner_description {
+      font-size: 1.2rem;
+      padding-top: 5px;
+    }
+
+    .games_results_container {
       padding: 20px;
     }
 
-    .grid {
+    .games_results_grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 16px;
     }
 
-    .card {
+    .games_results_card {
       border: 1px solid #e5e5e5;
       border-radius: 12px;
       padding: 16px;
       background: white;
     }
 
-    .card h3 {
+    .games_results_card h3 {
       margin: 0 0 8px;
       font-size: 16px;
     }
 
-    .card p {
+    .games_results_card p {
       margin: 0;
       font-size: 14px;
       color: #555;
@@ -40,10 +70,15 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="grid">
+  <div class="games_results_banner_container">
+    <div class="games_results_banner_logo"><img src="https://lh3.googleusercontent.com/d/1Ve0TXrrlzMmQsYIb9Eo-NMtE4LFYilHN" alt="TGA Travel Gear Adventure"></div>
+    <div class="games_results_banner_title">TGA Adventure Games Leaderboard</div>
+    <div class="games_results_banner_description">These are the total scores (total of all games the individual has participated in.)</div>
+  </div>
+  <div class="games_results_container">
+    <div class="games_results_grid">
       
-        <div class="card">
+        <div class="games_results_card">
           
             <p><strong>First Name:</strong> Adam</p>
           
@@ -55,7 +90,7 @@
           
         </div>
       
-        <div class="card">
+        <div class="games_results_card">
           
             <p><strong>First Name:</strong> Josh</p>
           
@@ -67,7 +102,7 @@
           
         </div>
       
-        <div class="card">
+        <div class="games_results_card">
           
             <p><strong>First Name:</strong> Judy</p>
           
