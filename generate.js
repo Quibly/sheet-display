@@ -226,7 +226,7 @@ function buildHTML(top3, rest) {
               `<h3 class="rank-title third">Third Place</h3>`
             }
     
-            <p>#${index + 1} - ${fullName} - Score: ${row.Score}</p>
+            <p>#${index + 1} - ${fullName} - Score: ${row["Total Score"]}</p>
           </div>
         `;
       }).join("")}
@@ -242,7 +242,7 @@ function buildHTML(top3, rest) {
     
         return `
           <div class="games_results_card">
-            #${place} - ${fullName} - Score: ${row.Score}
+            #${place} - ${fullName} - Score: ${row["Total Score"]}
           </div>
         `;
       }).join("")}
@@ -263,7 +263,7 @@ async function run() {
     data = data
       .map(row => ({
         ...row,
-        Score: Number(row.Score) || 0
+        Score: Number(row["Total Score"]) || 0
       }))
       .sort((a, b) => b.Score - a.Score);
     
