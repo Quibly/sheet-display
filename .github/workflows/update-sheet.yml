@@ -1,8 +1,8 @@
 name: Update Google Sheet Render
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"  # every 5 minutes
+  repository_dispatch:
+    types: [sheet_update] # Matches event_type from Google Script
   workflow_dispatch:
 
 permissions:
