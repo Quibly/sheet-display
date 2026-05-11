@@ -206,7 +206,7 @@ function buildHTML(top3, rest) {
 </head>
 <body>
   <div class="games_results_banner_container">
-    <div class="games_results_banner_logo"><img src="https://lh3.googleusercontent.com/d/1Ve0TXrrlzMmQsYIb9Eo-NMtE4LFYilHN" alt="TGA Travel Gear Adventure"></div>
+    <div class="games_results_banner_logo"><img src="{Your logo link here}" alt="TGA Travel Gear Adventure"></div>
     <div class="games_results_banner_title">TGA Adventure Games Leaderboard</div>
     <div class="games_results_banner_description">These are the total scores (total of all games the individual has participated in.)</div>
   </div>
