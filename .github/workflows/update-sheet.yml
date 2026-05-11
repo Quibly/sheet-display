@@ -1,38 +1,38 @@
-name: Update Google Sheet Render
+#name: Update Google Sheet Render
 
-on:
-  repository_dispatch:
-    types: [sheet_update] # Matches event_type from Google Script
-  workflow_dispatch:
+#on:
+  #repository_dispatch:
+    #types: [sheet_update] # Matches event_type from Google Script
+  #workflow_dispatch:
 
-permissions:
-  contents: write
+#permissions:
+  #contents: write
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+#jobs:
+  #build:
+    #runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+    #steps:
+      #- name: Checkout repo
+        #uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+      #- name: Setup Node
+        #uses: actions/setup-node@v4
+        #with:
+          #node-version: 20
 
-      - name: Install dependencies
-        run: npm install
+      #- name: Install dependencies
+        #run: npm install
 
-      - name: Run generator
-        run: node generate.js
-        env: 
-          SHEET_URL: ${{ secrets.SHEET_URL }}
+      #- name: Run generator
+        #run: node generate.js
+        #env: 
+          #SHEET_URL: ${{ secrets.SHEET_URL }}
 
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add docs/index.html
-          git commit -m "Auto update sheet" || echo "No changes"
-          git push
+      #- name: Commit changes
+        #run: |
+          #git config user.name "github-actions"
+          #git config user.email "github-actions@github.com"
+          #git add docs/index.html
+          #git commit -m "Auto update sheet" || echo "No changes"
+          #git push
